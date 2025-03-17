@@ -1,5 +1,4 @@
 ## Playwright CLI Commands Reference
-
 ### Run Tests
 - **Run all tests:**  
   ```sh
@@ -38,4 +37,10 @@
 - **Run tests in debug mode:**  
   ```sh
   npx playwright test --project=chromium --debug
+  ```
+
+### Set up project 
+- **Initialize a new Playwright project:**  
+  ```sh
+  npm init playwright@latest
   ```

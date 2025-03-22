@@ -1,9 +1,16 @@
 import { test } from "@playwright/test";
 
-test("first test", () => {});
-
-test.describe("test suite 1", () => {
-  test("first test", () => {});
-  test("second test", () => {});
-  test("third test", () => {});
+test("the first test", async ({ page }) => {
+  await page.goto("http://localhost:4200/");
+  await page.getByText("Forms").click();
+  await page.getByText("Form Layouts").click();
 });
+
+// // Test suite
+// test.describe("test suite", () => {
+//   test("the third test", async ({ page }) => {
+//     await page.goto("http://localhost:4200/");
+//     await page.getByText("Forms").click();
+//     await page.getByText("Form Layouts").click();
+//   });
+// });

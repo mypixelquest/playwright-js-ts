@@ -38,6 +38,22 @@ test("Locator Syntax Rules", async ({ page }) => {
 });
 
 test("User facing locators ", async ({ page }) => {
+  // by role
   await page.getByRole("textbox", { name: "Email" }).first().click();
   await page.getByRole("button", { name: "Sign in" }).first().click();
+
+  // by label
+  await page.getByLabel("Email").first().click();
+
+  // by placeholder
+  await page.getByPlaceholder("Jane Doe").first().click();
+
+  // by text
+  await page.getByText("Using the Grid").click();
+
+  // by text TestID
+  await page.getByTestId("Sign in").click();
+
+  // by title
+  await page.getByTitle("IoT Dashboard").click();
 });

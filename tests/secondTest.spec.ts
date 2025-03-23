@@ -104,4 +104,26 @@ test("Verify locating parent elements", async ({ page }) => {
     .filter({ hasText: "Basic form" })
     .getByRole("textbox", { name: "Email" })
     .click();
+
+  // Filter parent element by child element
+  await page
+    .locator("nb-card")
+    .filter({ has: page.locator(".status-danger") })
+    .getByRole("textbox", { name: "Password" })
+    .click();
+
+  // Filter parent element by multiple child elements
+  await page
+    .locator("nb-card")
+    .filter({ has: page.locator("nb-checkbox") })
+    .filter({ hasText: "Sign in" })
+    .getByRole("textbox", { name: "Password" })
+    .click();
+
+  // Not recommended: Locate parent element by Xpath
+  await page
+    .locator(':text-is("Using the Grid")')
+    .locator("..")
+    .getByRole("textbox", { name: "Password" })
+    .click();
 });

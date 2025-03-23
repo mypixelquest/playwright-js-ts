@@ -36,3 +36,8 @@ test("Locator Syntax Rules", async ({ page }) => {
   // by text match
   page.locator(':text-is("Using the Grid")');
 });
+
+test("User facing locators ", async ({ page }) => {
+  await page.getByRole("textbox", { name: "Email" }).first().click();
+  await page.getByRole("button", { name: "Sign in" }).first().click();
+});

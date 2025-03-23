@@ -1,33 +1,42 @@
 import { test } from "@playwright/test";
 
+// Global setup: Navigate to the base URL before each test
 test.beforeEach(async ({ page }) => {
   await page.goto("http://localhost:4200/");
 });
 
-test.describe("suite1", () => {
+// Test suite 1: Tests related to "Charts" navigation
+test.describe("Charts Navigation Tests", () => {
+  // Suite-specific setup: Click on "Charts" before each test in this suite
   test.beforeEach(async ({ page }) => {
     await page.getByText("Charts").click();
   });
 
-  test("navigate to the form layouts", async ({ page }) => {
+  // Test 1: Verify navigation to the "Form Layouts" page from Charts
+  test("should navigate to the Form Layouts page from Charts", async ({ page }) => {
     await page.getByText("Form Layouts").click();
   });
 
-  test("navigate to the datepicker page", async ({ page }) => {
+  // Test 2: Verify navigation to the "Datepicker" page from Charts
+  test("should navigate to the Datepicker page from Charts", async ({ page }) => {
     await page.getByText("Datepicker").click();
   });
 });
 
-test.describe.only("suite2", () => {
+// Test suite 2: Tests related to "Forms" navigation
+test.describe.only("Forms Navigation Tests", () => {
+  // Suite-specific setup: Click on "Forms" before each test in this suite
   test.beforeEach(async ({ page }) => {
     await page.getByText("Forms").click();
   });
 
-  test("test3 ", async ({ page }) => {
+  // Test 3: Verify navigation to the "Form Layouts" page from Forms
+  test("should navigate to the Form Layouts page from Forms", async ({ page }) => {
     await page.getByText("Form Layouts").click();
   });
 
-  test("test4", async ({ page }) => {
+  // Test 4: Verify navigation to the "Datepicker" page from Forms
+  test("should navigate to the Datepicker page from Forms", async ({ page }) => {
     await page.getByText("Datepicker").click();
   });
 });

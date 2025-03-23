@@ -1,13 +1,21 @@
 import { expect, test } from "@playwright/test";
 
-// Navigate to the target page and set up the test environment before each test
-test.beforeEach(async ({ page }) => {
-  await page.goto("http://uitestingplayground.com/ajax"); // Navigate to the AJAX testing page
-  await page.getByText("Button Triggering AJAX Request").click(); // Trigger the AJAX request by clicking the button
+// Navigate to the AJAX testing page before each test
+// Trigger the AJAX request by clicking the button
+test.beforeEach(async ({ page }, testInfo) => {
+  // Go to the AJAX testing page
+  await page.goto("http://uitestingplayground.com/ajax");
+
+  // Click the button to trigger the AJAX request
+  await page.getByText("Button Triggering AJAX Request").click();
+
+  // Extend the test timeout by 2 seconds to account for AJAX delays
+  testInfo.setTimeout(testInfo.timeout + 2000);
 });
 
 test("should wait for the AJAX request to complete", async ({ page }) => {
-  const successButton = page.locator(".bg-success"); // Locate the element that will appear after the AJAX request completes
+  // Locate the element that will appear after the AJAX request completes
+  const successButton = page.locator(".bg-success");
 
   // Uncomment this if you want to manually click the success button after it appears
   // await successButton.click();
@@ -28,15 +36,16 @@ test("should wait for the AJAX request to complete", async ({ page }) => {
 });
 
 test("alternative waits", async ({ page }) => {
-  const successButton = page.locator(".bg-success"); // Locate the element that will appear after the AJAX request completes
+  // Locate the element that will appear after the AJAX request completes
+  const successButton = page.locator(".bg-success");
 
-  // __wait for the element to appear in the DOM
+  // Wait for the element to appear in the DOM
   // await page.waitForSelector(".bg-success");
 
-  // __wait for a specific network response to be received
+  // Wait for a specific network response to be received
   // await page.waitForResponse("http://uitestingplayground.com/ajaxdata");
 
-  // __wait for all network calls to be completed (Not recommended for AJAX-heavy pages as it may lead to flaky tests)
+  // Wait for all network calls to be completed (Not recommended for AJAX-heavy pages as it may lead to flaky tests)
   await page.waitForLoadState("networkidle");
 
   // Retrieve all text contents of the success button
@@ -44,4 +53,14 @@ test("alternative waits", async ({ page }) => {
 
   // Assert that the retrieved text contains the expected message
   expect(text).toContain("Data loaded with AJAX get request.");
+});
+
+test("timeouts", async ({ page }) => {
+  // test.setTimeout(10000);
+  test.slow();
+
+  const successButton = page.locator(".bg-success");
+
+  // await successButton.click({ timeout: 16000 });
+  await successButton.click();
 });

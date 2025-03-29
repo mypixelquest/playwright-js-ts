@@ -6,7 +6,7 @@ import { defineConfig, devices } from "@playwright/test";
  */
 // import dotenv from 'dotenv';
 // import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+// dotenv.config({ path: path.resolve(__dirname, npm '.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -16,6 +16,9 @@ export default defineConfig({
   // globalTimeout: 60000,
   // expect: { timeout: 20000 },
   testDir: "./tests",
+  testIgnore: [
+    "**/test-data/**", // Ignore the test-data folder
+  ],
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

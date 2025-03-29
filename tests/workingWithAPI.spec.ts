@@ -1,11 +1,12 @@
 import { test, expect } from "@playwright/test";
-import tags from "./test-data/tags.json";
 
 test.beforeEach(async ({ page }) => {
   await page.route(
     "https://conduit-api.bondaracademy.com/api/tags",
     async (route) => {
-      console.log("✅ Intercepted and fulfilled API call to /api/tags");
+      const tags = {
+        tags: ["tag-a", "tag-b", "tag-c", "tag-d"],
+      };
       await route.fulfill({
         body: JSON.stringify(tags),
       });
@@ -14,7 +15,6 @@ test.beforeEach(async ({ page }) => {
 
   await page.goto("https://conduit.bondaracademy.com/");
   await page.waitForTimeout(5000);
-  console.log("✅ Navigated to the base URL");
 });
 
 test("verify conduit title", async ({ page }) => {

@@ -10,12 +10,23 @@ export class DatepickerPage {
   async selectCommonDatePickerDateFromToday(numberOfDaysFromToday: number) {
     const calendarInputField = this.page.getByPlaceholder("Form Picker");
     await calendarInputField.click();
+    const dateToAssert = await this.selectDateInTheCalendar(
+      numberOfDaysFromToday
+    );
 
+    await expect(calendarInputField).toHaveValue(dateToAssert);
+  }
+
+  private async selectDateInTheCalendar(numberOfDaysFromToday: number) {
     let date = new Date();
     date.setDate(date.getDate() + numberOfDaysFromToday);
     const expectedDate = date.getDate().toString();
-    const expectedMonthShot = date.toLocaleString("En-US", { month: "short" });
-    const expectedMonthLong = date.toLocaleString("En-US", { month: "long" });
+    const expectedMonthShot = date.toLocaleString("En-US", {
+      month: "short",
+    });
+    const expectedMonthLong = date.toLocaleString("En-US", {
+      month: "long",
+    });
     const expectedYear = date.getFullYear();
     const dateToAssert = `${expectedMonthShot} ${expectedDate}, ${expectedYear}`;
 
@@ -37,6 +48,7 @@ export class DatepickerPage {
       .locator("[class='day-cell ng-star-inserted']")
       .getByText(expectedDate, { exact: true })
       .click();
-    await expect(calendarInputField).toHaveValue(dateToAssert);
+
+    return dateToAssert;
   }
 }

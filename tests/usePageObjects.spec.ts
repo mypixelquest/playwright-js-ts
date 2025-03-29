@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { NavigationPage } from "../page-objects/navigationPage";
 import { FormLayoutPage } from "../page-objects/formLayoutPage";
-import { DatepickerPage } from "../page-objects/datePickerPage";
+import { DatepickerPage } from "../page-objects/datePickerPAge";
 
 // Navigate to the target page and set up the test environment before each test
 test.beforeEach(async ({ page }) => {
@@ -37,5 +37,5 @@ test("parameterized method", async ({ page }) => {
   );
 
   await navigateTo.datepickerPage();
-  await onDatepickerPage.selectCommonDatePickerDateFromToday(5);
+  await onDatepickerPage.selectCommonDatePickerDateFromToday(10);
 });

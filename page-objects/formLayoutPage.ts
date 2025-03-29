@@ -1,12 +1,11 @@
 import { type Page } from "@playwright/test";
+import { HelperBase } from "./helperBase";
 
 // This class represents the page object for the Form Layout Page
-export class FormLayoutPage {
-  private readonly page: Page;
-
+export class FormLayoutPage extends HelperBase {
   // Constructor to initialize the page object
   constructor(page: Page) {
-    this.page = page;
+    super(page);
   }
 
   /**

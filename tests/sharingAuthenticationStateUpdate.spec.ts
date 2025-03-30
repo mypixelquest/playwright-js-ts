@@ -55,6 +55,7 @@ test("should create and delete an article using API", async ({
       },
     }
   );
+  console.log(await articleRespose.json());
   expect(articleRespose.status()).toBe(201);
 
   await page.getByText("Global Feed").click();

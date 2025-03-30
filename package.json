@@ -2,7 +2,12 @@
   "name": "playwright-js-ts",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "pageObject-chrome": "npx playwright test usePageObjects.spec.ts --project=chromium",
+    "pageObject-firefox": "npx playwright test usePageObjects.spec.ts --project=firefox",
+    "pageObject-all": "npm run pageObject-chrome && npm run pageObject-firefox",
+    "pageObject-all-parallel": "npm run pageObject-chrome & npm run pageObject-firefox"
+  },
   "author": "",
   "license": "ISC",
   "description": "",

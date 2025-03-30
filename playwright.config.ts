@@ -38,6 +38,9 @@ export default defineConfig({
     trace: "on-first-retry",
     // actionTimeout: 5000,
     // navigationTimeout: 5000,
+    extraHTTPHeaders: {
+      Authorization: `Token ${process.env.ACCESS_TOKEN}`,
+    },
   },
 
   /* Configure projects for major browsers */

@@ -74,6 +74,18 @@ export default defineConfig<TestOptions>({
 
   /* Configure projects for major browsers */
   projects: [
+    { name: "setup", testMatch: "auth.setup.ts" },
+    {
+      name: "articleSetup",
+      testMatch: "newArticle.setup.ts",
+      dependencies: ["setup"],
+    },
+    {
+      name: "likeCounter",
+      testMatch: "likesCounter.spec.ts",
+      use: { ...devices["Desktop Chrome"], storageState: ".auth/user.json" },
+      dependencies: ["articleSetup"],
+    },
     {
       name: "pageObjectsFullScreen",
       testMatch: "usePageObjectsFakerScreenshotVideo.spec.ts",
@@ -97,8 +109,6 @@ export default defineConfig<TestOptions>({
     //     baseURL: "http://localhost:4202/",
     //   },
     // },
-
-    { name: "setup", testMatch: "auth.setup.ts" },
 
     {
       name: "chromium",

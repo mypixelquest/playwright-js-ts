@@ -6,6 +6,7 @@ const authFile = ".auth/user.json";
 const user = JSON.parse(fs.readFileSync(authFile, "utf-8"));
 
 setup("authentication", async ({ request }) => {
+  console.log("Setting up authentication...");
   // setup("authentication", async ({ page }) => {
   // await page.goto("https://conduit.bondaracademy.com/");
   // await page.getByText("Sign in").click();
@@ -33,4 +34,5 @@ setup("authentication", async ({ request }) => {
   fs.writeFileSync(authFile, JSON.stringify(user));
 
   process.env.ACCESS_TOKEN = accessToken;
+  console.log("Access token set in environment variable:", accessToken);
 });

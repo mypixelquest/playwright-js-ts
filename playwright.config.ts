@@ -60,6 +60,13 @@ export default defineConfig({
     //   use: { ...devices["Desktop Chrome"] },
     // },
 
+    // // just incase we need to run tests in parallel only on chromium
+    // {
+    //   name: "chromium-parellel",
+    //   use: { ...devices["Desktop Chrome"] },
+    //   fullyParallel: true,
+    // },
+
     {
       name: "firefox",
       use: { ...devices["Desktop Firefox"], storageState: ".auth/user.json" },

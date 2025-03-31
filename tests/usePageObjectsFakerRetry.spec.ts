@@ -2,10 +2,13 @@ import { test, expect } from "@playwright/test";
 import { PageManager } from "../page-objects/pageManager";
 import { faker } from "@faker-js/faker";
 
+// test.describe.configure({ mode: "parallel" }); // Run tests in parallel
+
 test.describe.only("Page Object Model with Faker", () => {
   // Override the retries for this test suite irrespective of the global config
   // This will retry each test in this suite 3 times if it fails
   test.describe.configure({ retries: 3 });
+  // test.describe.configure({ mode: "serial" }); // Run tests in serial
 
   // Navigate to the target page and set up the test environment before each test
   test.beforeEach(async ({ page }) => {

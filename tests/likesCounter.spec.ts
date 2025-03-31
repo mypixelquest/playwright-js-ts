@@ -9,5 +9,7 @@ test("Like counter increase", async ({ page }) => {
     .first()
     .locator("button");
 
+  await expect(firstLikeButton).toContainText("0");
   await firstLikeButton.click();
+  await expect(firstLikeButton).toContainText("1");
 });

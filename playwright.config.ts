@@ -76,9 +76,14 @@ export default defineConfig<TestOptions>({
   projects: [
     { name: "setup", testMatch: "auth.setup.ts" },
     {
+      name: "articleCleanUp",
+      testMatch: "articleCleanUp.setup.ts",
+    },
+    {
       name: "articleSetup",
       testMatch: "newArticle.setup.ts",
       dependencies: ["setup"],
+      teardown: "articleCleanUp",
     },
     {
       name: "likeCounter",

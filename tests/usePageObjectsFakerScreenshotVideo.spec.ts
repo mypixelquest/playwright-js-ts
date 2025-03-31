@@ -31,8 +31,8 @@ test("parameterized method", async ({ page }) => {
   await pm
     .onFormLayoutsPage()
     .submitUsingTheGridFormWithCredentialsAndSelectOption(
-      "test@test.com",
-      "Welcome1",
+      process.env.USERNAME!,
+      process.env.PASSWORD!,
       "Option 1"
     );
 

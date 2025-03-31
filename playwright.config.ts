@@ -9,6 +9,17 @@ import type { TestOptions } from "./test-options";
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, npm '.env') });
 
+import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url"; // Import fileURLToPath
+
+// Resolve __dirname in ES module
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load environment variables from the .env file
+dotenv.config({ path: path.resolve(__dirname, ".env") });
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -36,8 +47,14 @@ export default defineConfig<TestOptions>({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
-    baseURL: "http://localhost:4200/",
+    // baseURL: "http://localhost:4200/",
     uitestingplaygroundURL: "http://uitestingplayground.com/ajax",
+    baseURL:
+      process.env.DEV === "1"
+        ? "http://localhost:4200/"
+        : process.env.QA === "1"
+        ? "http://localhost:4201/"
+        : "http://localhost:4200/",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",

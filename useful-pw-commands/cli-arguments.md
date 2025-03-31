@@ -1,4 +1,5 @@
 ## Playwright CLI Commands Reference
+
 ### Run Tests
 - **Run all tests:**  
   ```sh
@@ -39,8 +40,14 @@
   npx playwright test --project=chromium --debug
   ```
 
-### Set up project 
+### Set Up Project
 - **Initialize a new Playwright project:**  
   ```sh
   npm init playwright@latest
+  ```
+
+### Example: Run a Test with Environment Variables
+- **Run a test file using environment variables:**  
+  ```sh
+  URL=https://www.npmjs.com/package/dotenv npx playwright test autoWaitingUsingENV.spec.ts --project=chromium --headed
   ```

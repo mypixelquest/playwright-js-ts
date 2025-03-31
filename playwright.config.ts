@@ -1,4 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
+import type { TestOptions } from "./test-options";
 
 /**
  * Read environment variables from file.
@@ -11,7 +12,8 @@ import { defineConfig, devices } from "@playwright/test";
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+// export default defineConfig({
+export default defineConfig<TestOptions>({
   // timeout: 40000,
   // globalTimeout: 60000,
   // expect: { timeout: 20000 },
@@ -34,6 +36,8 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
+    baseURL: "http://localhost:4200/",
+    uitestingplaygroundURL: "http://uitestingplayground.com/ajax",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
@@ -53,6 +57,19 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // dev and staging
+    // {
+    //   name: "dev",
+    //   use: { ...devices["Desktop Chrome"], baseURL: "http://localhost:4201/" },
+    // },
+    // {
+    //   name: "staging",
+    //   use: {
+    //     ...devices["Desktop Chrome"],
+    //     baseURL: "http://localhost:4202/",
+    //   },
+    // },
+
     { name: "setup", testMatch: "auth.setup.ts" },
 
     {

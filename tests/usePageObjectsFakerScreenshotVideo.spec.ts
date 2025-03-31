@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 // Navigate to the target page and set up the test environment before each test
 test.beforeEach(async ({ page }) => {
   // Go to the base URL of the application
-  await page.goto("http://localhost:4200/");
+  await page.goto("/"); // baseURL is set in playwright.config.ts
 });
 
 test("navigate to form page", async ({ page }) => {

@@ -74,6 +74,17 @@ export default defineConfig<TestOptions>({
 
   /* Configure projects for major browsers */
   projects: [
+    {
+      name: "pageObjectsFullScreen",
+      testMatch: "usePageObjectsFakerScreenshotVideo.spec.ts",
+      use: {
+        video: {
+          mode: "on",
+          size: { width: 1920, height: 1080 },
+        },
+      },
+    },
+
     // dev and staging
     // {
     //   name: "dev",

@@ -38,8 +38,8 @@ test("parameterized method", async ({ page }) => {
 
   await page.screenshot({ path: "screenshots/formLayoutPage.png" });
   // just incase you want to save the screenshot as binary data
-  const buffer = await page.screenshot();
-  console.log(buffer.toString("base64"));
+  // const buffer = await page.screenshot();
+  // console.log(buffer.toString("base64"));
   await pm
     .onFormLayoutsPage()
     .submitInlineFormWithNameEmailAndCheckbox(

@@ -43,6 +43,12 @@ export default defineConfig({
     extraHTTPHeaders: {
       Authorization: `Token ${process.env.ACCESS_TOKEN}`,
     },
+    // video: "on",
+    // Specify the video size 720p
+    // video: {
+    //   mode: "on",
+    //   size: { width: 1280, height: 720 },
+    // },
   },
 
   /* Configure projects for major browsers */
